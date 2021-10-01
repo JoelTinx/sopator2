@@ -1,0 +1,17 @@
+@import '../../colors.scss';
+
+nav {
+  background-color: $primero-color;
+  display: flex;
+  padding: 0;
+  width: 100%;
+
+  .menu-item {
+    padding: 10px 20px;
+    color: $noveno-color;
+    text-decoration: none;
+    &:hover {
+      background-color: $segundo-color;
+    }
+  }
+}

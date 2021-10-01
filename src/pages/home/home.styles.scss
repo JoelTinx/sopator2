@@ -1,0 +1,12 @@
+.main {
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+}
+
+.selected {
+  background-color: pink;
+}
+
+.table-row {
+  cursor: pointer;
+}
