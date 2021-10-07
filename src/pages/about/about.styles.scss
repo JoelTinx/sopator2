@@ -1,0 +1,25 @@
+.about-page {
+  padding: 25px;
+  
+  .container {
+    margin: 0 auto;
+    max-width: 980px;
+
+    .subtitle {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    
+    .text {
+      font-size: .95rem;
+      letter-spacing: 0.5px;
+      line-height: 1.5rem;
+      text-align: center;
+    }
+  
+  }
+
+}
+

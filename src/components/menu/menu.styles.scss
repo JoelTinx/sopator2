@@ -1,17 +1,22 @@
 @import '../../colors.scss';
 
 nav {
-  background-color: $primero-color;
+  background-color: $primary;
   display: flex;
   padding: 0;
   width: 100%;
 
   .menu-item {
     padding: 10px 20px;
-    color: $noveno-color;
+    color: white;
     text-decoration: none;
+    font-size: .85rem;
+
     &:hover {
-      background-color: $segundo-color;
+      background-color: $primary-hover;
+    }
+    &.menu-item--active {
+      background-color: $primary-hover;
     }
   }
 }

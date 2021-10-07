@@ -1,4 +1,22 @@
-// $primary: 
+@import './colors2.scss';
+
+$primary: $blue-500;
+$primary-hover: $blue-400;
+
+$secondary: $gray-500;
+$secondary-hover: $gray-400;
+
+$info: $cyan-500;
+$info-hover: $cyan-400;
+
+$success: $green-500;
+$success-hover: $green-400;
+
+$warning: $yellow-500;
+$warning-hover: $yellow-400;
+
+$danger: $red-500;
+$danger-hover: $red-400;
 
 $primero-color: #03045e;
 $segundo-color: #023e8a;

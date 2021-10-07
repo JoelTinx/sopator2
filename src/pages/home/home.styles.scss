@@ -1,12 +1,187 @@
+@import '../../colors.scss';
+@import '../../colors2.scss';
+
+.btn {
+  border-radius: .25rem;
+  padding: .25rem .5rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.btn-disbled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.my-4 {
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
+.mx-4 {
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+
+.ml-4 {
+  margin-left: .25rem;
+}
+
+.mr-4 {
+  margin-right: .25rem;
+}
+
+.w-20 {
+  width: 20px;
+}
+
+.btn-primary {
+  background-color: $primary;
+  color: white;
+
+  &:hover {
+    background-color: $primary-hover !important;
+  }
+}
+
+.btn-secondary {
+  background-color: $secondary;
+  color: white;
+
+  &:hover {
+    background-color: $secondary-hover !important;
+  }
+}
+
+.btn-info {
+  background-color: $info;
+  color: white;  
+
+  &:hover {
+    background-color: $info-hover !important;
+  }
+}
+
+.btn-success {
+  background-color: $success;
+  color: white;  
+
+  &:hover {
+    background-color: $success-hover !important;
+  }
+}
+
+.btn-warning {
+  background-color: $warning;
+  color: white;  
+
+  &:hover {
+    background-color: $warning-hover !important;
+  }
+}
+
+.btn-danger {
+  background-color: $danger;
+  color: white;  
+
+  &:hover {
+    background-color: $danger-hover !important;
+  }
+}
+
 .main {
   display: grid;
   grid-template-columns: 2fr 8fr;
+  height: calc(100vh - 40px);
 }
 
-.selected {
-  background-color: pink;
+.left-side {
+  border: 1px solid $segundo-color;
+  padding: 10px;
+}
+
+.right-side {
+  border: 1px solid $tercero-color;
+  padding: 10px;
+}
+
+.tr-selected {
+  background-color: $gray-200;
+}
+
+tr:hover {
+  background-color: $gray-100;
 }
 
 .table-row {
   cursor: pointer;
+}
+
+.th-10 {
+  width: 10%;
+}
+
+.table {
+  width: 100%;
+  font-size: .75rem;
+}
+
+.label {
+  font-size: .75em;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-label {
+  font-size: .75em;
+}
+
+.input-word {
+  border: 1px solid $quinto-color;
+  border-radius: 1rem;
+  font-size: .75rem;
+  outline: none;
+  padding: 5px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.input-word::placeholder {
+  opacity: .4;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.divider {
+  margin: 1rem 0;
+}
+
+.input-table {
+  font-size: .75rem;
+  height: 100%;
+  outline: none;
+  padding: 5px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.button-delete {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0 .25rem;
+}
+
+.button-save {
+  background-color: $cuarto-color;
+  color: white;
+  border: none;
+  padding: 0 .25rem;
 }

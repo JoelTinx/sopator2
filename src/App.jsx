@@ -11,9 +11,9 @@ const App = () => {
     <Router>
       <Menu />
       <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/advices" exact component={AdvicesPage} />
-        <Route path="/about" exact component={AboutPage} />
+        <Route exact path="/advices" component={AdvicesPage} />
+        <Route exact path="/about" component={AboutPage} />
+        <Route path="/" component={HomePage} />
       </Switch>
     </Router>
   )
