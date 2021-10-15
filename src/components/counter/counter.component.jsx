@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCounter } from '../../hooks/useCounter';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './counter.styles.scss';
 
-const Counter = () => {
-  const [min, max] = [10, 50];
-  const { counter, increment, decrement, setCustomValue } = useCounter(20, min, max);
+const Counter = ({min = 1, max = 99, initial = 1, onValueChange}) => {
+  const { counter, increment, decrement, setCustomValue } = useCounter(initial, min, max);
+
+  useEffect(() => {
+    onValueChange(counter)
+  }, [counter])
 
   const onChange = (event) => {
     if (event.target.value === '') {

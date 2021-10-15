@@ -1,11 +1,14 @@
+@import '../../colors2.scss';
+
 .wrapper {
   display: flex;
   width: 72px;
-  border: 1px solid #333;
+  border: 1px solid $gray-400;
   border-radius: 16px;
 }
 
 .button {
+  // background-color: $gray-100;
   background-color: white;
   border-radius: 50%;
   height: 24px;
@@ -14,6 +17,9 @@
   cursor: pointer;
   outline: none;
   font-size: 10px;
+  // &:hover {
+  //   background-color: $gray-200;
+  // }
 }
 
 input {

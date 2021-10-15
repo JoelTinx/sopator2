@@ -10,11 +10,13 @@ const App = () => {
   return (
     <Router>
       <Menu />
-      <Switch>
-        <Route exact path="/advices" component={AdvicesPage} />
-        <Route exact path="/about" component={AboutPage} />
-        <Route path="/" component={HomePage} />
-      </Switch>
+      <div className="main-container">
+        <Switch>
+          <Route exact path="/advices" component={AdvicesPage} />
+          <Route exact path="/about" component={AboutPage} />
+          <Route path="/" component={HomePage} />
+        </Switch>
+      </div>
     </Router>
   )
 }

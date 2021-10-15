@@ -5,18 +5,28 @@ nav {
   display: flex;
   padding: 0;
   width: 100%;
+  justify-content: center;
 
-  .menu-item {
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-    font-size: .85rem;
+  .menu-container {
+    max-width: 1280px;
+    display: flex;
+    justify-content: start;
+    width: 100%;
 
-    &:hover {
-      background-color: $primary-hover;
-    }
-    &.menu-item--active {
-      background-color: $primary-hover;
+    .menu-item {
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: .85rem;
+    
+      &:hover {
+        background-color: $primary-hover;
+      }
+
+      &.menu-item--active {
+        background-color: $primary-hover;
+      }
     }
   }
+
 }

@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
 import Counter from '../../components/counter/counter.component'
+import Modal from '../../components/modal/modal.component'
 import TableResult from '../../components/table-result/table-result.component'
+import WordList from '../../components/word-list/word-list.component'
 
-import { Sopator } from '../../libs/sopator'
+import { matrixToString, Sopator } from '../../libs/sopator'
 
 import './home.styles.scss'
 
 const HomePage = () => {
+  const initialSize = 15;
   const [words, setWords] = useState([])
   const [word, setWord] = useState('')
-  const [wordEdit, setWordEdit] = useState('')
-  const [indexSelected, setIndexSelected] = useState(null);
-  const [indexEdit, setIndexEdit] = useState(null)
   const [matrix, setMatrix] = useState([]);
   const [ready, setReady] = useState(false);
+  const [width, setWidth] = useState(initialSize);
+  const [height, setHeight] = useState(initialSize);
+  const [textSolution, setTextSolution] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+
 
   const handleAppendWord = () => {
     if (!isValidWord(word)) {
@@ -33,10 +38,6 @@ const HomePage = () => {
     return true;
   }
 
-  const handleInputEditChange = (event) => {
-    setWordEdit(event.target.value)
-  }
-
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleAppendWord();
@@ -51,26 +52,26 @@ const HomePage = () => {
     setWords(words.filter((_, i) => (i !== index)))
   };
 
-  const updateItem = (index, value) => {
+  const updateWord = (index, value) => {
     const arr = words.map((w, i) => (i === index ? setWordFormat(value) : w));
-    console.log({index, value, arr});
     setWords(arr);
-    setWordEdit('')
-    setIndexEdit(null)
   };
 
-  const handleInputEditKeyDown = (event, index, value) => {
-    if (event.key === 'Enter') {
-      updateItem(index, value)
-    }
-  }
-
   const handleClickGenerateButton = () => {
-    const sopator = new Sopator(words);
+    const sopator = new Sopator(words, height, width);
     sopator.generate();
-    console.log(sopator.toString())
+    // console.log(sopator.matrix, sopator.height, sopator.width);
+    // console.log(sopator.log);
     setMatrix(sopator.matrix);
     setReady(true)
+    setTextSolution('');
+    const res = `${matrixToString(sopator.matrix)}\n
+PALABRAS:
+
+${words.join('\n')}
+    
+Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a tus amigos y mencionarnos. Gracias`;
+    setTextSolution(res)
   }
 
   const handleClickCleanWords = () => {
@@ -79,88 +80,78 @@ const HomePage = () => {
     setReady(false)
   }
 
+  const onWithChange = (_width) => {
+    setWidth(_width)
+  }
+
+  const onHeightChange = (_height) => {
+    setHeight(_height);
+  }
+
+  const showModal = () => {
+    setModalVisible(true);
+
+  }
+
+  const closeModal = () => {
+    setModalVisible(false);
+  }
+
   return (
     <div className="main">
-      <div className="left-side">
-        <div className="flex">
-          <div className="flex">
-            <label htmlFor="height" className="label mr-4">Height</label>
-            <Counter />
-          </div>
-          <div className="flex">
-            <label htmlFor="width" className="label mr-4">Width</label>
-            <Counter />
-          </div>
-        </div>
+      <div className="left-side p-16 flex2">
         <div>
+          <div className="card">
+            <p className="title center mb-16">Dimensiones</p>
+            <div className="flex">
+              <div className="flex">
+                <label htmlFor="height" className="label mr-4">Height</label>
+                <Counter
+                  min={15}
+                  max={50}
+                  initial={initialSize}
+                  onValueChange={onHeightChange}
+                />
+              </div>
+              <div className="flex">
+                <label htmlFor="width" className="label mr-4">Width</label>
+                <Counter
+                  min={15}
+                  max={50}
+                  initial={initialSize}
+                  onValueChange={onWithChange}
+                />
+              </div>
+            </div>
+          </div>
           <hr className="divider"/>
-        </div>
-        <div className="my-4">
-          {/* <label htmlFor="word" className="input-label">Palabra</label> */}
           <input
             type="text"
             name="word"
             value={word}
+            autoComplete="false"
             placeholder="palabra + (↵ enter)"
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className="input-word"
+            className="input-word my-4"
           />
-        </div>
-        <button type="button" className="btn btn-primary btn-block my-4" onClick={handleAppendWord}>
-          Agregar
-        </button>
-        <div>
+          <button
+            type="button"
+            className={`btn btn-primary btn-block my-4 ${ word.length === 0 ? 'btn-disbled' : '' }`}
+            onClick={handleAppendWord}
+            disabled={word.length === 0}
+          >
+            Agregar
+          </button>
           <hr className="divider"/>
-        </div>
-        <div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th className="th-10">#</th>
-                <th>Palabra</th>
-                <th className="th-10"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                words.map((w, index) => (
-                  <tr
-                    className={ `table-row ${ indexSelected === index ? 'tr-selected' : '' }` }
-                    key={index + 1}
-                    onClick={() => handleTableRowClick(index)}
-                    onDoubleClick={() => handleTableRowDoubleClick(w, index)}
-                  >
-                    <td>{index + 1}</td>
-                    <td>
-                      {
-                        (indexEdit !== null && indexEdit === index)
-                        ?
-                        <input
-                          value={wordEdit}
-                          onChange={handleInputEditChange}
-                          onKeyDown={(e) => handleInputEditKeyDown(e, index, wordEdit)}
-                          className="input-table"
-                        />
-                        :
-                        <span>{ w }</span>
-                      }
-                    </td>
-                    <td>
-                      {
-                        (indexEdit !== null && indexEdit === index) ?
-                        <button className="btn btn-success" onClick={() => updateItem(index, wordEdit)}>√</button> :
-                        <button className="btn btn-danger" onClick={() => removeWord(index)}>x</button>
-                      }
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <hr className="divider"/>
+          {
+            words.length >= 1 &&
+            <WordList
+              words={words}
+              updateWord={updateWord}
+              removeWord={removeWord}
+            />
+          }
         </div>
         <div>
           {
@@ -174,8 +165,8 @@ const HomePage = () => {
           }
         </div>
       </div>
-      <div className="right-side">
-        <div>
+      <div className="right-side p-16">
+        <div className="mb-8">
           <button
             className={`btn btn-danger mr-4 ${ words.length === 0 ? 'btn-disbled' : '' }`}
             onClick={handleClickGenerateButton}
@@ -189,29 +180,43 @@ const HomePage = () => {
           >
             Resolver
           </button>
-          <button
+          {/* <button
             className={`btn btn-info mx-4 ${!ready ? 'btn-disbled' : ''}`}
             disabled={!ready}
           >
             Limpiar
-          </button>
+          </button> */}
           <button
             className={`btn btn-secondary ml-4 ${!ready ? 'btn-disbled' : ''}`}
             disabled={!ready}
+            onClick={() => showModal()}
           >
             Guardar
           </button>
         </div>
         <div>
-          {
-            matrix.length > 0
-            ?
-            <TableResult matrix={matrix} />
-            :
-            <span>...</span>
-          }
+          { matrix.length > 0 && <TableResult matrix={matrix} /> }
         </div>
       </div>
+        {
+          modalVisible &&
+          <Modal
+            children={<ModalResult content={textSolution} />}
+            onClick={closeModal}
+          />
+        }
+    </div>
+  )
+}
+
+const ModalResult = ({ content = '' }) => {
+  return (
+    <div className="w-full">
+      <textarea 
+        className="w-full h-full p-16"
+        defaultValue={content}
+      >
+      </textarea>
     </div>
   )
 }

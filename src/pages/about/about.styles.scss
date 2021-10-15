@@ -1,25 +1,27 @@
 .about-page {
-  padding: 25px;
-  
-  .container {
-    margin: 0 auto;
-    max-width: 980px;
+  padding: 1.5rem;
 
+  .container {
+  
     .subtitle {
-      font-size: 1.5rem;
-      font-weight: 500;
+      font-size: 1.05rem;
+      font-weight: 600;
       margin: 1.5rem 0;
       text-align: center;
     }
     
     .text {
-      font-size: .95rem;
+      font-size: .9rem;
       letter-spacing: 0.5px;
       line-height: 1.5rem;
       text-align: center;
+      font-weight: 400;
     }
   
   }
 
 }
 
+.card {
+  
+}

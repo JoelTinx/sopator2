@@ -17,17 +17,23 @@ export class Sopator {
     { x: 1, y: 1 },
   ];
 
-  constructor(list) {
+  // constructor(list) {
+  //   this.words = list;
+  // }
+
+  constructor(list, height, width) {
     this.words = list;
+    this.height = height;
+    this.width = width;
   }
 
   generate() {
     this.matrix = this.createMatrix();
     for (let i = 0; i < this.words.length; i++) {
       const pos_x = randomInt(this.width);
-      const pos_y = randomInt(this.width);
+      const pos_y = randomInt(this.height);
       const index_dir = randomInt(this.directions.length);
-      if (this.validateInsertWord(this.words[i], pos_x, pos_y, this.directions[index_dir])) {
+      if (this.validateWordInsertion(this.words[i], pos_x, pos_y, this.directions[index_dir])) {
         this.insertWord(this.words[i], pos_x, pos_y, this.directions[index_dir]);
       } else {
         i--;
@@ -37,17 +43,22 @@ export class Sopator {
     this.fillSoup();
   }
 
-  validateInsertWord(word, pos_x, pos_y, direction) {
+  validateWordInsertion(word, pos_x, pos_y, direction) {
     let len = word.length;
     let result = false;
     if (
-      pos_x + len * direction.x > 0 &&
-      pos_x + len * direction.x < this.width &&
-      pos_y + len * direction.y > 0 &&
-      pos_y + len * direction.y < this.height
+      (pos_x + len * direction.x) > 0 &&
+      (pos_x + len * direction.x) < this.width &&
+      (pos_y + len * direction.y) > 0 &&
+      (pos_y + len * direction.y) < this.height
     ) {
       for (let i = 0; i < word.length; i++) {
-        if (this.matrix[pos_x + i * direction.x][pos_y + i * direction.y] == '*' || this.matrix[pos_x + i * direction.x][pos_y + i * direction.y] == word[i]) {
+        // console.log(this.matrix, pos_x, pos_y, word, direction, {i}, word[i], this.matrix[pos_y + i * direction.y][pos_x + i * direction.x]);
+        // console.log(`this.matrix [${pos_y + i * direction.y}][${pos_x + i * direction.x}]`);
+        if (
+          this.matrix[pos_y + i * direction.y][pos_x + i * direction.x] == '*' ||
+          this.matrix[pos_y + i * direction.y][pos_x + i * direction.x] == word[i]
+        ) {
           result = true;
         } else {
           result = false;
@@ -61,7 +72,7 @@ export class Sopator {
   insertWord(word, pos_x, pos_y, direction) {
     this.log = [...this.log, { word, x: pos_x, y: pos_y, direction }];
     for (let i = 0; i < word.length; i++) {
-      this.matrix[pos_x + i * direction.x][pos_y + i * direction.y] = word[i];
+      this.matrix[pos_y + i * direction.y][pos_x + i * direction.x] = word[i];
     }
   }
 
@@ -98,7 +109,8 @@ export const copyMatrix = (matrix) => {
 }
 
 export const matrixToString = (matrix) => {
-  return matrix.map((row) => row.join('\t')).join('\n');
+  // return matrix.map((row) => row.join('\t')).join('\n');
+  return matrix.map((row) => row.join(' ')).join('\n');
 }
 
 export const randomInt = (value) => {
