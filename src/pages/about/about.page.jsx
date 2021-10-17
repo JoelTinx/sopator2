@@ -23,16 +23,17 @@ const AboutPage = () => {
 
         <h3 className="subtitle">Acerca de los creadores</h3>
         <p className="text">
-          Sopator fue diseñada y creada en su totalidad por los autores, con el único fin de aportar a la comunidad una aplicación que pueda ser de ayuda.
+          Sopator fue diseñada y creada en su totalidad por los autores, con el único fin de aportar a la comunidad una aplicación que pueda ser de utilidad.
         </p>
 
-        <div>
+        <div className="card-container">
           
-          <div className="card">
+          <div className="card mr-32">
             <div className="circle">
+              <img src="assets/images/joeltinx.jpg" className="circle" alt="joeltinx" />
             </div>
             <div className="author-description">
-              <h3>Joel Tinx</h3>
+              <h3>Joel Tinoco</h3>
               <p>Programmer</p>
             </div>
           </div>
@@ -41,7 +42,7 @@ const AboutPage = () => {
             <div className="circle">
             </div>
             <div className="author-description">
-              <h3>Emily LS</h3>
+              <h3>Emily Lapa</h3>
               <p>Reviewer and content fixer</p>
             </div>
           </div>

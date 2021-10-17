@@ -8,13 +8,13 @@ const Menu = () => {
     <nav>
       <div className="menu-container">
         <NavLink className="menu-item" activeClassName="menu-item--active" exact={true} to="/">
-          Home
+          Inicio
         </NavLink>
         <NavLink className="menu-item" activeClassName="menu-item--active" to="/advices">
-          Advices
+          Consejos
         </NavLink>
         <NavLink className="menu-item" activeClassName="menu-item--active" to="/about">
-          About
+          Acerca de
         </NavLink>
       </div>
     </nav>

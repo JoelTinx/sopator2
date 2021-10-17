@@ -2,9 +2,16 @@ import React from 'react'
 
 import './modal.styles.scss'
 
-const Modal = ({ children, onClick }) => {
+const Modal = ({ children, onClick, backdropdismiss = false }) => {
+  const handleBackdropdissmis = (hasbackdrop) => {
+    if (!hasbackdrop) return;
+    onClick();
+  }
   return (
-    <div className="modal">
+    <div
+      className="modal"
+      onClick={() => handleBackdropdissmis(backdropdismiss)}
+    >
       <div className="modal-content">
         <div className="modal-header">
           <span

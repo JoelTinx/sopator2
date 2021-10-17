@@ -3,6 +3,7 @@ export class Sopator {
   alphabet = 'ABCDEFGKIJKLMNOPQRSTUVWXYZ';
   height = 15;
   width = 15;
+  solution = [];
   matrix = [];
   words = [];
   log = [];
@@ -39,7 +40,7 @@ export class Sopator {
         i--;
       }
     }
-    
+    this.solution = copyMatrix(this.matrix);
     this.fillSoup();
   }
 

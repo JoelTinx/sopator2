@@ -5,6 +5,9 @@
   width: 72px;
   border: 1px solid $gray-400;
   border-radius: 16px;
+  &:hover {
+    border: 1px solid $gray-600;
+  }
 }
 
 .button {
@@ -16,10 +19,11 @@
   border: none;
   cursor: pointer;
   outline: none;
-  font-size: 10px;
-  // &:hover {
-  //   background-color: $gray-200;
-  // }
+  font-size: .85rem;  
+  &:hover {
+    // background-color: $gray-100;
+    font-weight: 600;
+  }
 }
 
 input {

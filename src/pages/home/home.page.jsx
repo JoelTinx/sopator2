@@ -18,6 +18,8 @@ const HomePage = () => {
   const [height, setHeight] = useState(initialSize);
   const [textSolution, setTextSolution] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [backup, setBackup] = useState([])
+  const [viewSolution, setViewSolution] = useState(false)
 
 
   const handleAppendWord = () => {
@@ -62,15 +64,11 @@ const HomePage = () => {
     sopator.generate();
     // console.log(sopator.matrix, sopator.height, sopator.width);
     // console.log(sopator.log);
-    setMatrix(sopator.matrix);
+    setMatrix(sopator.matrix)
+    setBackup(sopator.solution)
     setReady(true)
-    setTextSolution('');
-    const res = `${matrixToString(sopator.matrix)}\n
-PALABRAS:
-
-${words.join('\n')}
-    
-Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a tus amigos y mencionarnos. Gracias`;
+    setTextSolution('')
+    const res = `${matrixToString(sopator.matrix)}\n\nPALABRAS:\n${words.join('\n')}\n\nSi haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a tus amigos y conocidos.\n\nGracias`;
     setTextSolution(res)
   }
 
@@ -97,6 +95,11 @@ Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a
     setModalVisible(false);
   }
 
+  const handleClickSolution = () => {
+    console.log('handleClickSolution');
+    setViewSolution(!viewSolution)
+  }
+
   return (
     <div className="main">
       <div className="left-side p-16 flex2">
@@ -105,7 +108,7 @@ Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a
             <p className="title center mb-16">Dimensiones</p>
             <div className="flex">
               <div className="flex">
-                <label htmlFor="height" className="label mr-4">Height</label>
+                <label htmlFor="height" className="label mr-4">Alto</label>
                 <Counter
                   min={15}
                   max={50}
@@ -114,7 +117,7 @@ Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a
                 />
               </div>
               <div className="flex">
-                <label htmlFor="width" className="label mr-4">Width</label>
+                <label htmlFor="width" className="label mr-4">Ancho</label>
                 <Counter
                   min={15}
                   max={50}
@@ -129,7 +132,7 @@ Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a
             type="text"
             name="word"
             value={word}
-            autoComplete="false"
+            autoComplete="off"
             placeholder="palabra + (↵ enter)"
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
@@ -168,7 +171,7 @@ Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a
       <div className="right-side p-16">
         <div className="mb-8">
           <button
-            className={`btn btn-danger mr-4 ${ words.length === 0 ? 'btn-disbled' : '' }`}
+            className={`btn btn-primary mr-4 ${ words.length === 0 ? 'btn-disbled' : '' }`}
             onClick={handleClickGenerateButton}
             disabled={(words.length === 0)}
           >
@@ -177,8 +180,9 @@ Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a
           <button
             className={`btn btn-success mx-4 ${!ready ? 'btn-disbled' : ''}`}
             disabled={!ready}
+            onClick={() => handleClickSolution()}
           >
-            Resolver
+            { !viewSolution ? 'Ver' : 'Ocultar' } solución
           </button>
           {/* <button
             className={`btn btn-info mx-4 ${!ready ? 'btn-disbled' : ''}`}
@@ -195,13 +199,14 @@ Si haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a
           </button>
         </div>
         <div>
-          { matrix.length > 0 && <TableResult matrix={matrix} /> }
+          { matrix.length > 0 && <TableResult matrix={matrix} solution={viewSolution} backup={backup} /> }
         </div>
       </div>
         {
           modalVisible &&
           <Modal
             children={<ModalResult content={textSolution} />}
+            backdropdismiss={true}
             onClick={closeModal}
           />
         }

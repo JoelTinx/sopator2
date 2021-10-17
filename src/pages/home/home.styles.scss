@@ -193,7 +193,7 @@ tr:hover {
 }
 
 .input-word {
-  border: 1px solid $quinto-color;
+  border: 1px solid $blue-300;
   border-radius: 1rem;
   font-size: .75rem;
   outline: none;
@@ -225,13 +225,6 @@ tr:hover {
 
 .button-delete {
   background-color: red;
-  color: white;
-  border: none;
-  padding: 0 .25rem;
-}
-
-.button-save {
-  background-color: $cuarto-color;
   color: white;
   border: none;
   padding: 0 .25rem;
