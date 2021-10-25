@@ -1,5 +1,6 @@
 import React from 'react'
 
+import './../../utils.scss'
 import './table-result.styles.scss'
 
 const TableResult = ({ matrix, solution, backup }) => {

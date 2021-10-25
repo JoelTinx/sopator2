@@ -6,8 +6,8 @@ import './menu.styles.scss';
 const Menu = () => {
   return (
     <nav>
-      <div className="menu-container">
-        <NavLink className="menu-item" activeClassName="menu-item--active" exact={true} to="/">
+      <MenuContainer>
+        <NavLink className="menu-item" activeClassName="menu-item--active" to="/" exact={true}>
           Inicio
         </NavLink>
         <NavLink className="menu-item" activeClassName="menu-item--active" to="/advices">
@@ -16,9 +16,11 @@ const Menu = () => {
         <NavLink className="menu-item" activeClassName="menu-item--active" to="/about">
           Acerca de
         </NavLink>
-      </div>
+      </MenuContainer>
     </nav>
   )
 }
+
+const MenuContainer = ({ children }) => <div className="menu-container">{ children }</div>
 
 export default Menu

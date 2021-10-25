@@ -1,7 +1,7 @@
 # SOPATOR 2: (letters soups generator)
 
 ----------
-### ¿What is SOPATOR?
+### ¿What is SOPATOR 2?
 *SOPATOR* is ...
 
 ### Differences between Sopator 1
@@ -10,7 +10,7 @@
 ### Features
 *
 
-### Mejoras pendientes:
+### Pending improvements:
 * 
 
 ### Demo:

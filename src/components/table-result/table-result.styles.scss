@@ -1,25 +1,5 @@
 @import '../../colors2.scss';
 
-.w-20 {
-  width: 1.25rem;
-}
-
-.w-24 {
-  width: 1.5rem;
-}
-
-.w-28 {
-  width: 1.75rem;
-}
-
-.w-32 {
-  width: 2rem;
-}
-
-.w-40 {
-  width: 3.5rem;
-}
-
 td {
   text-align: center;
 }
@@ -27,7 +7,6 @@ td {
 .table-result {
   display: inline-block;
   padding: 1rem;
-  // margin: 2rem;
 }
 
 .border {

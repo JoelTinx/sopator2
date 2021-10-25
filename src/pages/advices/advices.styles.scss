@@ -1,3 +1,19 @@
+@import '../../colors2.scss';
+
 .items-list {
   list-style-position: inside;
+}
+
+.grid {
+  .items-container {
+    .items-list{
+      font-size: .9rem;
+      letter-spacing: 0.75px;
+      line-height: 1.5rem;
+      font-weight: 400;
+      color: $gray-500;
+    }
+  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

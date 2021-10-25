@@ -2,7 +2,7 @@
 @import '../../colors2.scss';
 
 nav {
-  background-color: $slate-600;
+  background-color: $slate-800;
   display: flex;
   padding: 0;
   width: 100%;
@@ -21,11 +21,11 @@ nav {
       font-size: .85rem;
     
       &:hover {
-        background-color: $slate-400;
+        background-color: $slate-600;
       }
 
       &.menu-item--active {
-        background-color: $slate-400;
+        background-color: $slate-600;
       }
     }
   }

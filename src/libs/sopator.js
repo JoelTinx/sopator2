@@ -18,12 +18,8 @@ export class Sopator {
     { x: 1, y: 1 },
   ];
 
-  // constructor(list) {
-  //   this.words = list;
-  // }
-
-  constructor(list, height, width) {
-    this.words = list;
+  constructor(words, height, width) {
+    this.words = words;
     this.height = height;
     this.width = width;
   }
@@ -54,8 +50,6 @@ export class Sopator {
       (pos_y + len * direction.y) < this.height
     ) {
       for (let i = 0; i < word.length; i++) {
-        // console.log(this.matrix, pos_x, pos_y, word, direction, {i}, word[i], this.matrix[pos_y + i * direction.y][pos_x + i * direction.x]);
-        // console.log(`this.matrix [${pos_y + i * direction.y}][${pos_x + i * direction.x}]`);
         if (
           this.matrix[pos_y + i * direction.y][pos_x + i * direction.x] == '*' ||
           this.matrix[pos_y + i * direction.y][pos_x + i * direction.x] == word[i]

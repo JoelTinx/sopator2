@@ -15,9 +15,8 @@
     
     .text {
       font-size: .9rem;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.75px;
       line-height: 1.5rem;
-      text-align: center;
       font-weight: 400;
       color: $gray-500;
     }
@@ -48,7 +47,6 @@
     .circle {
       width: 160px;
       height: 160px;
-      border: 1px solid black;
       border-radius: 50%;
     }
   

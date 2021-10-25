@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Counter from '../../components/counter/counter.component'
+
+import DimensionSelector from '../../components/dimension-selector/dimension-selector.component'
 import Modal from '../../components/modal/modal.component'
 import TableResult from '../../components/table-result/table-result.component'
 import WordList from '../../components/word-list/word-list.component'
@@ -9,18 +10,17 @@ import { matrixToString, Sopator } from '../../libs/sopator'
 import './home.styles.scss'
 
 const HomePage = () => {
-  const initialSize = 15;
+  const [min, max, initialValue] = [10, 50, 15];
   const [words, setWords] = useState([])
   const [word, setWord] = useState('')
   const [matrix, setMatrix] = useState([]);
   const [ready, setReady] = useState(false);
-  const [width, setWidth] = useState(initialSize);
-  const [height, setHeight] = useState(initialSize);
+  const [width, setWidth] = useState(initialValue);
+  const [height, setHeight] = useState(initialValue);
   const [textSolution, setTextSolution] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [backup, setBackup] = useState([])
   const [viewSolution, setViewSolution] = useState(false)
-
 
   const handleAppendWord = () => {
     if (!isValidWord(word)) {
@@ -35,8 +35,8 @@ const HomePage = () => {
     setWord(event.target.value)
   }
 
-  const isValidWord = (x_word) => {
-    if (x_word.length <= 2) return false;
+  const isValidWord = (inputWord) => {
+    if (inputWord.length <= 2) return false;
     return true;
   }
 
@@ -46,8 +46,8 @@ const HomePage = () => {
     }
   }
 
-  const setWordFormat = (x_word = '') => {
-    return x_word.trim().replace(' ', '').toUpperCase();
+  const setWordFormat = (inputWord = '') => {
+    return inputWord.trim().replace(' ', '').toUpperCase();
   }
 
   const removeWord = (index) => {
@@ -62,13 +62,11 @@ const HomePage = () => {
   const handleClickGenerateButton = () => {
     const sopator = new Sopator(words, height, width);
     sopator.generate();
-    // console.log(sopator.matrix, sopator.height, sopator.width);
-    // console.log(sopator.log);
     setMatrix(sopator.matrix)
     setBackup(sopator.solution)
     setReady(true)
     setTextSolution('')
-    const res = `${matrixToString(sopator.matrix)}\n\nPALABRAS:\n${words.join('\n')}\n\nSi haz generado tu sopa de letras con este aplicativo, no olvides recomendarlo a tus amigos y conocidos.\n\nGracias`;
+    const res = `${matrixToString(sopator.matrix)}\n\nPALABRAS:\n${words.join('\n')}\n\nSi has generado tu sopa de letras con este aplicativo, no olvides recomendarlo a tus amigos y conocidos.\n\nGracias`;
     setTextSolution(res)
   }
 
@@ -78,17 +76,16 @@ const HomePage = () => {
     setReady(false)
   }
 
-  const onWithChange = (_width) => {
-    setWidth(_width)
+  const onWithChange = (inputWidth) => {
+    setWidth(inputWidth)
   }
 
-  const onHeightChange = (_height) => {
-    setHeight(_height);
+  const onHeightChange = (inputHeight) => {
+    setHeight(inputHeight);
   }
 
   const showModal = () => {
     setModalVisible(true);
-
   }
 
   const closeModal = () => {
@@ -96,64 +93,52 @@ const HomePage = () => {
   }
 
   const handleClickSolution = () => {
-    console.log('handleClickSolution');
     setViewSolution(!viewSolution)
   }
 
   return (
     <div className="main">
-      <div className="left-side p-16 flex2">
+      <div className="left-side p-16 flex-column">
         <div>
-          <div className="card">
-            <p className="title center mb-16">Dimensiones</p>
-            <div className="flex">
-              <div className="flex">
-                <label htmlFor="height" className="label mr-4">Alto</label>
-                <Counter
-                  min={15}
-                  max={50}
-                  initial={initialSize}
-                  onValueChange={onHeightChange}
-                />
-              </div>
-              <div className="flex">
-                <label htmlFor="width" className="label mr-4">Ancho</label>
-                <Counter
-                  min={15}
-                  max={50}
-                  initial={initialSize}
-                  onValueChange={onWithChange}
-                />
-              </div>
-            </div>
-          </div>
-          <hr className="divider"/>
-          <input
-            type="text"
-            name="word"
-            value={word}
-            autoComplete="off"
-            placeholder="palabra + (↵ enter)"
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            className="input-word my-4"
+          <DimensionSelector
+            min={min}
+            max={max}
+            initialValue={initialValue}
+            onHeightChange={onHeightChange}
+            onWithChange={onWithChange}
           />
-          <button
-            type="button"
-            className={`btn btn-primary btn-block my-4 ${ word.length === 0 ? 'btn-disbled' : '' }`}
-            onClick={handleAppendWord}
-            disabled={word.length === 0}
-          >
-            Agregar
-          </button>
-          <hr className="divider"/>
+          {/* <Divider /> */}
+          <div className="card mt-16">
+            <input
+              type="text"
+              name="word"
+              tabIndex="0"
+              value={word}
+              autoComplete="off"
+              placeholder="palabra + (↵ enter)"
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              className="input-word my-4"
+            />
+            <button
+              type="button"
+              className={`btn btn-primary btn-block my-4 ${ word.length === 0 ? 'btn-disbled' : '' }`}
+              onClick={handleAppendWord}
+              disabled={word.length === 0}
+            >
+              Agregar
+            </button>
+          </div>
+          {/* <Divider /> */}
           {
             words.length >= 1 &&
-            <WordList
-              words={words}
-              updateWord={updateWord}
-              removeWord={removeWord}
-            />
+            <div className="card mt-16">
+              <WordList
+                words={words}
+                updateWord={updateWord}
+                removeWord={removeWord}
+              />
+            </div>
           }
         </div>
         <div>
@@ -184,12 +169,6 @@ const HomePage = () => {
           >
             { !viewSolution ? 'Ver' : 'Ocultar' } solución
           </button>
-          {/* <button
-            className={`btn btn-info mx-4 ${!ready ? 'btn-disbled' : ''}`}
-            disabled={!ready}
-          >
-            Limpiar
-          </button> */}
           <button
             className={`btn btn-secondary ml-4 ${!ready ? 'btn-disbled' : ''}`}
             disabled={!ready}
@@ -202,19 +181,19 @@ const HomePage = () => {
           { matrix.length > 0 && <TableResult matrix={matrix} solution={viewSolution} backup={backup} /> }
         </div>
       </div>
-        {
-          modalVisible &&
-          <Modal
-            children={<ModalResult content={textSolution} />}
-            backdropdismiss={true}
-            onClick={closeModal}
-          />
-        }
+      {
+        modalVisible &&
+        <Modal
+          children={<ModalBody content={textSolution} />}
+          backdropdismiss={false}
+          onClick={closeModal}
+        />
+      }
     </div>
   )
 }
 
-const ModalResult = ({ content = '' }) => {
+const ModalBody = ({ content = '' }) => {
   return (
     <div className="w-full">
       <textarea 
@@ -225,5 +204,7 @@ const ModalResult = ({ content = '' }) => {
     </div>
   )
 }
+
+const Divider = () => <hr className="divider"/>
 
 export default HomePage
