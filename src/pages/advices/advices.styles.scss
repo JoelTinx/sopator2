@@ -4,6 +4,14 @@
   list-style-position: inside;
 }
 
+.subtitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  text-align: center;
+  color: $zinc-500;
+}
+
 .grid {
   .items-container {
     .items-list{
