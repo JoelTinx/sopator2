@@ -1,0 +1,17 @@
+{
+  "title": "Sopator",
+  "menu": [
+    {
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "title": "Advices",
+      "link": "/advises"
+    },
+    {
+      "title": "About",
+      "link": "/about"
+    }
+  ]
+}
