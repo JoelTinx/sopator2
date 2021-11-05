@@ -109,6 +109,7 @@ const HomePage = () => {
           />
           {/* <Divider /> */}
           <div className="card mt-16">
+            <p className="title center mb-8">Entrada de palabras</p>
             <input
               type="text"
               name="word"

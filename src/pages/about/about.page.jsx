@@ -23,10 +23,8 @@ const AboutPage = () => {
       <div className="container">
         <SubTitle>¿Qué es Sopator?</SubTitle>
         <SimpleText>
-          La Sopa de Letras es un popular y divertido juego que es prácticado por personas de toda edad (niños, jovenes, adultos y ancianos), debido a la simpleza de sus reglas y la capacidad de poder incluir un sin fin de palabras que por lo general estan vinculadas en una temática común y que podrían ser de interes del la persona que lo juega.
-          Si bien este juego es divertido, pero muchas veces el proceso de creación puede resultar siendo un poco complicado; es entonces que nace esta sencilla herramienta.
-          Sopator es una aplicación web de código abierto, cuya principal finalidad es la de agilizar la de creación de <strong>sopas de letras</strong> de manera fácil y rpida, reduciendo el tiempo y el esfuerzo empleado por el usuario.
-          La interfaz de usuario es sencilla e intuitiva, lo cual permite que el usuario tenga una experiencia satisfactoria.
+          Una sopa de letras es un popular y divertido juego que es practicado por personas de toda edad, debido a la simpleza de sus reglas y la capacidad de poder incluir un sin fin de palabras que por lo general están vinculadas en una temática común que puede ser de interés del la persona que lo juega. Si bien este juego es divertido, pero en ocasiones el proceso de creación puede resultar siendo un poco laborioso; es por ello que nace esta sencilla herramienta. 
+          <strong> Sopator</strong> es una aplicación web de código abierto, cuya principal finalidad es la de agilizar la de creación de sopas de letras de manera fácil y rápida, reduciendo el tiempo y el esfuerzo empleado por el usuario. La interfaz gráfica es sencilla e intuitiva, lo cual le permite tener una experiencia satisfactoria.
         </SimpleText>
 
         <SubTitle>Acerca de los creadores</SubTitle>
