@@ -1,5 +1,14 @@
 @import '../../colors2.scss';
 
+.advices-page {
+
+  .container {
+    height: 100vh;
+    background-color: white;
+  }
+
+}
+
 .items-list {
   list-style-position: inside;
 }

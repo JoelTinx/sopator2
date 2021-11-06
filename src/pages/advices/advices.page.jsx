@@ -5,7 +5,7 @@ import './advices.styles.scss'
 
 const AdvicesPage = () => {
   return (
-    <div className="about-page">
+    <div className="advices-page">
       <div className="container">
 
         <h3 className="subtitle">Ingredientes para preparar una buena sopa de letras</h3>

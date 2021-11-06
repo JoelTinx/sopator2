@@ -7,7 +7,7 @@ const Menu = () => {
   return (
     <nav>
       <MenuContainer>
-        <NavLink className="menu-item" activeClassName="menu-item--active" to="/" exact={true}>
+        <NavLink className="menu-item" activeClassName="menu-item--active" to="/" exact>
           Inicio
         </NavLink>
         <NavLink className="menu-item" activeClassName="menu-item--active" to="/advices">

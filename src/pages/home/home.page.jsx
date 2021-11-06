@@ -107,9 +107,8 @@ const HomePage = () => {
             onHeightChange={onHeightChange}
             onWithChange={onWithChange}
           />
-          {/* <Divider /> */}
           <div className="card mt-16">
-            <p className="title center mb-8">Entrada de palabras</p>
+            <p className="title center mb-8">Ingresar palabras</p>
             <input
               type="text"
               name="word"
@@ -130,7 +129,6 @@ const HomePage = () => {
               Agregar
             </button>
           </div>
-          {/* <Divider /> */}
           {
             words.length >= 1 &&
             <div className="card mt-16">
