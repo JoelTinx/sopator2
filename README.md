@@ -1,16 +1,17 @@
-# SOPATOR 2: (letters soups generator)
+# SOPATOR 2: (letters soup generator)
 
 ----------
 ## ¿What is SOPATOR 2?
-*SOPATOR* is simple letter soup generator.
+*SOPATOR* is simple letters soup generator.
 
 ## Differences between Sopator 1
-Sopartor 1 was created using vanilla javascript, but for this version we are using [React](https://reactjs.org/). The main algorithm is the same, it has just some improvements.
+Sopartor 1 was created using vanilla javascript, but for this version we are using [React](https://reactjs.org/). The main algorithm is the same but it has just some improvements.
 
 ### Features
-- Geenrate letter soups with custom dimensions
+- Generate letters soup with custom dimensions
 - Fast solution
-- List of words editable
+- Button for remove a word from the list
+- Words in the list are editables with a double click
 - Button to clean all the list
 - Copy the solution as a text
 
