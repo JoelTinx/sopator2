@@ -23,13 +23,13 @@ const AboutPage = () => {
       <div className="container">
         <SubTitle>¿Qué es Sopator?</SubTitle>
         <SimpleText>
-          Una sopa de letras es un popular y divertido juego que es practicado por personas de toda edad, debido a la simpleza de sus reglas y la capacidad de poder incluir un sin fin de palabras que por lo general están vinculadas en una temática común que puede ser de interés del la persona que lo juega. Si bien este juego es divertido, pero en ocasiones el proceso de creación puede resultar siendo un poco laborioso; es por ello que nace esta sencilla herramienta. 
-          <strong> Sopator</strong> es una aplicación web de código abierto, cuya principal finalidad es la de agilizar la de creación de sopas de letras de manera fácil y rápida, reduciendo el tiempo y el esfuerzo empleado por el usuario. La interfaz gráfica es sencilla e intuitiva, lo cual le permite tener una experiencia satisfactoria.
+          Una sopa de letras es un popular y divertido juego que es practicado por personas de toda edad, debido a la simpleza de sus reglas y la capacidad de poder incluir un sin fin de palabras que por lo general están vinculadas en una temática común que puede ser de interés de la persona que lo juega. Si bien este juego es divertido, en ocasiones el proceso de creación puede resultar siendo un poco laborioso; es por ello que nace esta sencilla herramienta. 
+          <strong> Sopator</strong> es una aplicación web de código abierto, cuya principal finalidad es la de agilizar la de creación de sopas de letras de manera fácil y rápida, reduciendo el tiempo y esfuerzo empleado por el usuario. La interfaz gráfica es sencilla e intuitiva, la cual permite tener una experiencia satisfactoria.
         </SimpleText>
 
         <SubTitle>Acerca de los creadores</SubTitle>
         <SimpleText>
-          Sopator fue diseñado y creada en su totalidad por los autores, con el único fin de aportar a la comunidad una aplicación que pueda ser de utilidad.
+          Sopator fue diseñado y construido en su totalidad por los autores, con el único fin de aportar a la comunidad una aplicación que pueda ser de utilidad.
         </SimpleText>
 
         <AuthorList authors={authors} />

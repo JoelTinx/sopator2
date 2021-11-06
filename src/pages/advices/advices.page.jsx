@@ -15,7 +15,7 @@ const AdvicesPage = () => {
               <li>Ingrese palabras con más de tres ó cuatro caracteres.</li>
               <li>Evite ingresar palabras que contengan espacios.</li>
               <li>Evite ingresar palabras que contengan tíldes, números o caracteres especiales.</li>
-              <li>Para editar una palabra ingresada haga doble click sobre la palabra ingresada, corrija el valor y pulse Enter</li>
+              <li>Para editar una palabra ingresada haga doble click sobre la palabra, corrija el valor y pulse Enter.</li>
               <li>Se recomienda utilizar Google Chrome, Chrominium, Mozilla Firefox ó Safari.</li>
               <li>Para la dimensión por defecto se recomienda ingresar menos de 15 palabras.</li>
               <li>Si generas tu sopa de letras en texto y lo copias a un archivo de Microsoft Word u otro, se recominda usar el tipo de fuente "Consolas".</li>
