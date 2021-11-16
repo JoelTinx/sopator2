@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import Menu from './components/menu/menu.component'
 
@@ -9,12 +9,12 @@ import './utils.scss';
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Menu />
       <MainContainer>
         <AppRouter />
       </MainContainer>
-    </Router>
+    </BrowserRouter>
   )
 }
 

@@ -7,20 +7,26 @@ const Menu = () => {
   return (
     <nav>
       <MenuContainer>
-        <NavLink className="menu-item" activeClassName="menu-item--active" to="/" exact>
+        <CustomNavLink to="/">
           Inicio
-        </NavLink>
-        <NavLink className="menu-item" activeClassName="menu-item--active" to="/advices">
+        </CustomNavLink>
+        <CustomNavLink to="/advices">
           Consejos
-        </NavLink>
-        <NavLink className="menu-item" activeClassName="menu-item--active" to="/about">
+        </CustomNavLink>
+        <CustomNavLink to="/about">
           Acerca de
-        </NavLink>
+        </CustomNavLink>
       </MenuContainer>
     </nav>
   )
 }
 
 const MenuContainer = ({ children }) => <div className="menu-container">{ children }</div>
+
+const CustomNavLink = ({ children, ...props }) => (
+  <NavLink {...props} className={({isActive}) => isActive ? 'menu-item menu-item--active' : 'menu-item'}>
+    { children }
+  </NavLink>
+)
 
 export default Menu
