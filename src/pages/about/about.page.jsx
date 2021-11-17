@@ -32,6 +32,11 @@ const AboutPage = () => {
           Sopator fue diseñado y construido en su totalidad por los autores, con el único fin de aportar a la comunidad una aplicación que pueda ser de utilidad.
         </SimpleText>
 
+        <SubTitle>Código Fuente</SubTitle>
+        <SimpleText>
+          Usted puede descargar el código fuente de esta aplicación desde nuestro <a href="https://github.com/JoelTinx/sopator2" target="_blank">repositorio de GitHub</a>, son bienvenidos las sugerencias y comentarios.
+        </SimpleText>
+
         <AuthorList authors={authors} />
       </div>
     </div>
