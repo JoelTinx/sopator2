@@ -1,3 +1,4 @@
+import { matrixToString, randomInt, copyMatrix } from "./utils"
 
 export class Sopator {
   alphabet = 'ABCDEFGKIJKLMNOPQRSTUVWXYZ';
@@ -93,21 +94,4 @@ export class Sopator {
     return matrixToString(this.matrix);
   }
 
-}
-
-export const createArrayOfChars = (length, character) => {
-  return Array.from({ length: length }, () => character);
-}
-
-export const copyMatrix = (matrix) => {
-  return matrix.map((row) => [...row]);
-}
-
-export const matrixToString = (matrix) => {
-  // return matrix.map((row) => row.join('\t')).join('\n');
-  return matrix.map((row) => row.join(' ')).join('\n');
-}
-
-export const randomInt = (value) => {
-  return parseInt(Math.random() * value);
 }

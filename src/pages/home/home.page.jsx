@@ -5,7 +5,8 @@ import Modal from '../../components/modal/modal.component'
 import TableResult from '../../components/table-result/table-result.component'
 import WordList from '../../components/word-list/word-list.component'
 
-import { matrixToString, Sopator } from '../../libs/sopator'
+import { Sopator } from '../../libs/sopator'
+import { matrixToString } from '../../libs/utils'
 
 import './home.styles.scss'
 
@@ -177,7 +178,7 @@ const HomePage = () => {
           </button>
         </div>
         <div>
-          { matrix.length > 0 && <TableResult matrix={matrix} solution={viewSolution} backup={backup} /> }
+          { matrix.length > 0 && <TableResult matrix={matrix} solution={viewSolution} backup={backup} words={words} /> }
         </div>
       </div>
       {

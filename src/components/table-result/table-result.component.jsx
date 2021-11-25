@@ -1,9 +1,10 @@
 import React from 'react'
+import Solution from '../solution/solution.component'
 
 import './../../utils.scss'
 import './table-result.styles.scss'
 
-const TableResult = ({ matrix, solution, backup }) => {
+const TableResult = ({ matrix, solution, backup, words }) => {
   return (
     <div className="table-result border br-8">
       <table>
@@ -24,6 +25,8 @@ const TableResult = ({ matrix, solution, backup }) => {
           }
         </tbody>
       </table>
+      <hr />
+      <Solution words={words} columnSize={5} />
     </div>
   )
 }

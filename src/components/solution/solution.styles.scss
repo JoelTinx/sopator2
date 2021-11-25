@@ -1,0 +1,11 @@
+.solution {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.item-col {
+  font-size: .8rem;
+  font-weight: 500;
+  width: 100%;
+}
