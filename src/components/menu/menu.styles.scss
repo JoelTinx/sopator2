@@ -7,27 +7,50 @@ nav {
   padding: 0;
   width: 100%;
   justify-content: center;
+  height: 48px;
 
   .menu-container {
+    width: 100%;
     max-width: 1280px;
     display: flex;
-    justify-content: start;
-    width: 100%;
-
-    .menu-item {
-      padding: 10px 20px;
-      color: white;
-      text-decoration: none;
-      font-size: .85rem;
+    justify-content: space-between;
     
-      &:hover {
-        background-color: $slate-600;
-      }
-
-      &.menu-item--active {
-        background-color: $slate-600;
+    .logo-container {
+      display: flex;
+      align-items: center;
+    
+      a {
+        color: white;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: 600;
       }
     }
+
+    .options-container {
+      display: flex;
+
+      .menu-item {
+        color: white;
+        text-decoration: none;
+        font-size: .85rem;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+
+      
+        &:hover {
+          background-color: $slate-600;
+        }
+  
+        &.menu-item--active {
+          background-color: $slate-600;
+        }
+      }
+    }
+
   }
 
 }
