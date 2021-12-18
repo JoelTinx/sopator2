@@ -38,8 +38,10 @@
       flex-grow: 2;
     }
 
-    // .modal-footer {
-
-    // }
+    .modal-footer {
+      display: flex;
+      justify-content: center;
+      padding: 0 1rem 1rem 1rem;
+    }
   }
 }

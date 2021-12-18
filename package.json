@@ -8,13 +8,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "node-sass": "^6.0.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-router-dom": "^6.0.2",
-    "sass": "^1.42.1"
+    "react-router-dom": "^6.0.2"
   },
   "devDependencies": {
+    "node-sass": "^6.0.1",
+    "sass": "^1.42.1",
     "@vitejs/plugin-react": "^1.0.0",
     "source-map-explorer": "^2.5.2",
     "vite": "^2.5.4"

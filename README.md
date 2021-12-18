@@ -14,12 +14,12 @@ Sopartor 1 was created using vanilla javascript, but for this version we are usi
 - Words in the list are editables with a double click
 - Button to clean all the list
 - Copy the solution as a text
+- Button to copy the solution to clipboard
 
 ## Pending improvements:
 - Create solution in a canvas to export to PNG.
 - Create solution in PDF.
 - Create solution in Excel.
-- Append a button to copy the solution to clipboard.
 - Improve the user interface.
 - Improve the structure of the code.
 

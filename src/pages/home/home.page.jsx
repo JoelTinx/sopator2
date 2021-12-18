@@ -20,8 +20,9 @@ const HomePage = () => {
   const [height, setHeight] = useState(initialValue);
   const [textSolution, setTextSolution] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const [backup, setBackup] = useState([])
-  const [viewSolution, setViewSolution] = useState(false)
+  const [backup, setBackup] = useState([]);
+  const [viewSolution, setViewSolution] = useState(false);
+  const message = 'Si has generado tu sopa de letras con este aplicativo, no olvides recomendarlo a quien le pueda ser de utilidad.\n\nGracias';
 
   const handleAppendWord = () => {
     if (!isValidWord(word)) {
@@ -67,7 +68,7 @@ const HomePage = () => {
     setBackup(sopator.solution)
     setReady(true)
     setTextSolution('')
-    const res = `${matrixToString(sopator.matrix)}\n\nPALABRAS:\n${words.join('\n')}\n\nSi has generado tu sopa de letras con este aplicativo, no olvides recomendarlo a tus amigos y conocidos.\n\nGracias`;
+    const res = `${matrixToString(sopator.matrix, ' ')}\n\nPALABRAS:\n${words.join('\n')}\n\n${message}`;
     setTextSolution(res)
   }
 
@@ -91,6 +92,17 @@ const HomePage = () => {
 
   const closeModal = () => {
     setModalVisible(false);
+  }
+
+  const handleClickOkAndClose = () => {
+    navigator.clipboard.writeText(textSolution)
+      .then(() => {
+        setModalVisible(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('No se pudo copiar el texto al portapapeles. Por favor, copia manualmente.');
+      });
   }
 
   const handleClickSolution = () => {
@@ -156,21 +168,21 @@ const HomePage = () => {
       <div className="right-side p-16">
         <div className="mb-8">
           <button
-            className={`btn btn-primary mr-4 ${ words.length === 0 ? 'btn-disbled' : '' }`}
+            className={`btn btn-success mr-4 ${ words.length === 0 ? 'btn-disbled' : '' }`}
             onClick={handleClickGenerateButton}
             disabled={(words.length === 0)}
           >
             Generar
           </button>
           <button
-            className={`btn btn-success mx-4 ${!ready ? 'btn-disbled' : ''}`}
+            className={`btn ${ viewSolution ? 'btn-secondary' : 'btn-info'  } mx-4 ${!ready ? 'btn-disbled' : ''}`}
             disabled={!ready}
             onClick={() => handleClickSolution()}
           >
             { !viewSolution ? 'Ver' : 'Ocultar' } solución
           </button>
           <button
-            className={`btn btn-secondary ml-4 ${!ready ? 'btn-disbled' : ''}`}
+            className={`btn btn-primary ml-4 ${!ready ? 'btn-disbled' : ''}`}
             disabled={!ready}
             onClick={() => showModal()}
           >
@@ -186,7 +198,8 @@ const HomePage = () => {
         <Modal
           children={<ModalBody content={textSolution} />}
           backdropdismiss={false}
-          onClick={closeModal}
+          onCloseClick={closeModal}
+          onOkClick={handleClickOkAndClose}
         />
       }
     </div>
@@ -196,7 +209,8 @@ const HomePage = () => {
 const ModalBody = ({ content = '' }) => {
   return (
     <div className="w-full">
-      <textarea 
+      <textarea
+        id='txtSolution'
         className="w-full h-full p-16"
         defaultValue={content}
       >
@@ -204,7 +218,5 @@ const ModalBody = ({ content = '' }) => {
     </div>
   )
 }
-
-const Divider = () => <hr className="divider"/>
 
 export default HomePage
