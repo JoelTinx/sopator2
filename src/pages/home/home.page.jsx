@@ -100,7 +100,7 @@ const HomePage = () => {
         setModalVisible(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         alert('No se pudo copiar el texto al portapapeles. Por favor, copia manualmente.');
       });
   }
