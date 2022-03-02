@@ -1,15 +1,30 @@
 @import '../../colors.scss';
 @import '../../colors2.scss';
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.main-header {
+  width: 100%;
+  // border-bottom: 1px solid #cecece;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
 .main {
   display: grid;
   grid-template-columns: 3fr 9fr;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 90px);
 }
 
 .table {
   width: 100%;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .table-row {
@@ -31,7 +46,7 @@ tr:hover {
 .input-word {
   border: 1px solid $blue-300;
   border-radius: 1rem;
-  font-size: .75rem;
+  font-size: 0.75rem;
   outline: none;
   padding: 5px;
   text-transform: uppercase;
@@ -39,7 +54,7 @@ tr:hover {
 }
 
 .input-word::placeholder {
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .divider {
@@ -47,7 +62,7 @@ tr:hover {
 }
 
 .input-table {
-  font-size: .75rem;
+  font-size: 0.75rem;
   height: 100%;
   outline: none;
   padding: 5px;
@@ -56,6 +71,6 @@ tr:hover {
 }
 
 .title {
-  font-size: .85rem;
+  font-size: 0.85rem;
   font-weight: 600;
 }

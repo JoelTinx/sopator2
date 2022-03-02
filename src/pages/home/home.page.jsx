@@ -110,98 +110,103 @@ const HomePage = () => {
   }
 
   return (
-    <div className="main">
-      <div className="left-side p-16 flex-column">
-        <div>
-          <DimensionSelector
-            min={min}
-            max={max}
-            initialValue={initialValue}
-            onHeightChange={onHeightChange}
-            onWithChange={onWithChange}
-          />
-          <div className="card mt-16">
-            <p className="title center mb-8">Ingresar palabras</p>
-            <input
-              type="text"
-              name="word"
-              tabIndex="0"
-              value={word}
-              autoComplete="off"
-              placeholder="palabra + (↵ enter)"
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              className="input-word my-4"
+    <div className='main-container'>
+      <div className='main-header'>
+        <h3>CREA TÚ PROPIA SOPA DE LETRAS</h3>
+      </div>
+      <div className="main">
+        <div className="left-side p-16 flex-column">
+          <div>
+            <DimensionSelector
+              min={min}
+              max={max}
+              initialValue={initialValue}
+              onHeightChange={onHeightChange}
+              onWithChange={onWithChange}
             />
+            <div className="card mt-16">
+              <p className="title center mb-8">Ingresar palabras</p>
+              <input
+                type="text"
+                name="word"
+                tabIndex="0"
+                value={word}
+                autoComplete="off"
+                placeholder="palabra + (↵ enter)"
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+                className="input-word my-4"
+              />
+              <button
+                type="button"
+                className={`btn btn-primary btn-block my-4 ${ word.length === 0 ? 'btn-disbled' : '' }`}
+                onClick={handleAppendWord}
+                disabled={word.length === 0}
+              >
+                Agregar
+              </button>
+            </div>
+            {
+              words.length >= 1 &&
+              <div className="card mt-16">
+                <WordList
+                  words={words}
+                  updateWord={updateWord}
+                  removeWord={removeWord}
+                />
+              </div>
+            }
+          </div>
+          <div>
+            {
+              words.length >= 2 &&
+              <button 
+                className="btn btn-block btn-danger"
+                onClick={handleClickCleanWords}
+              >
+                limpiar lista
+              </button>
+            }
+          </div>
+        </div>
+        <div className="right-side p-16">
+          <div className="mb-8">
             <button
-              type="button"
-              className={`btn btn-primary btn-block my-4 ${ word.length === 0 ? 'btn-disbled' : '' }`}
-              onClick={handleAppendWord}
-              disabled={word.length === 0}
+              className={`btn btn-success mr-4 ${ words.length === 0 ? 'btn-disbled' : '' }`}
+              onClick={handleClickGenerateButton}
+              disabled={(words.length === 0)}
             >
-              Agregar
+              Generar
+            </button>
+            <button
+              className={`btn ${ viewSolution ? 'btn-secondary' : 'btn-info'  } mx-4 ${!ready ? 'btn-disbled' : ''}`}
+              disabled={!ready}
+              onClick={() => handleClickSolution()}
+            >
+              { !viewSolution ? 'Ver' : 'Ocultar' } solución
+            </button>
+            <button
+              className={`btn btn-primary ml-4 ${!ready ? 'btn-disbled' : ''}`}
+              disabled={!ready}
+              onClick={() => showModal()}
+            >
+              Guardar
             </button>
           </div>
-          {
-            words.length >= 1 &&
-            <div className="card mt-16">
-              <WordList
-                words={words}
-                updateWord={updateWord}
-                removeWord={removeWord}
-              />
-            </div>
-          }
+          <div>
+            { matrix.length > 0 && <TableResult matrix={matrix} solution={viewSolution} backup={backup} words={words} /> }
+          </div>
         </div>
-        <div>
-          {
-            words.length >= 2 &&
-            <button 
-              className="btn btn-block btn-danger"
-              onClick={handleClickCleanWords}
-            >
-              limpiar lista
-            </button>
-          }
-        </div>
+        {
+          modalVisible &&
+          <Modal
+            children={<ModalBody content={textSolution} />}
+            backdropdismiss={false}
+            onCloseClick={closeModal}
+            onOkClick={handleClickOkAndClose}
+          />
+        }
       </div>
-      <div className="right-side p-16">
-        <div className="mb-8">
-          <button
-            className={`btn btn-success mr-4 ${ words.length === 0 ? 'btn-disbled' : '' }`}
-            onClick={handleClickGenerateButton}
-            disabled={(words.length === 0)}
-          >
-            Generar
-          </button>
-          <button
-            className={`btn ${ viewSolution ? 'btn-secondary' : 'btn-info'  } mx-4 ${!ready ? 'btn-disbled' : ''}`}
-            disabled={!ready}
-            onClick={() => handleClickSolution()}
-          >
-            { !viewSolution ? 'Ver' : 'Ocultar' } solución
-          </button>
-          <button
-            className={`btn btn-primary ml-4 ${!ready ? 'btn-disbled' : ''}`}
-            disabled={!ready}
-            onClick={() => showModal()}
-          >
-            Guardar
-          </button>
-        </div>
-        <div>
-          { matrix.length > 0 && <TableResult matrix={matrix} solution={viewSolution} backup={backup} words={words} /> }
-        </div>
-      </div>
-      {
-        modalVisible &&
-        <Modal
-          children={<ModalBody content={textSolution} />}
-          backdropdismiss={false}
-          onCloseClick={closeModal}
-          onOkClick={handleClickOkAndClose}
-        />
-      }
     </div>
   )
 }
