@@ -25,9 +25,9 @@ Sopartor 1 was created using vanilla javascript, but for this version we are usi
 
 
 ## Demo:
-[Sopator v1.0.2](http://sopator.260mb.net/)
+[Sopator v1.0.2](http://sopator.260mb.net/) (older version)
 
-[Sopator v2.0.1-beta.1](https://sopator2.netlify.app/)
+[Sopator v2.0.1-beta.1](https://sopator2.netlify.app/) (current version)
 
 ## Follow me on Twiter
 [Joel Tinx](https://twitter.com/joeltinx)

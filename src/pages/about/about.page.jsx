@@ -23,7 +23,7 @@ const AboutPage = () => {
       <div className="container">
         <SubTitle>¿Qué es Sopator?</SubTitle>
         <SimpleText>
-          <strong> Sopator</strong> es una aplicación web de código abierto cuya principal finalidad es la de facilitar la de creación de sopas de letras, reduciendo el tiempo y esfuerzo empleado por el usuario. La interfaz gráfica es sencilla e intuitiva, lo le permitirá tener una experiencia satisfactoria.
+          <strong> Sopator</strong> es una aplicación web de código abierto, cuya principal finalidad es facilitar la creación de sopas de letras, reduciendo el tiempo y esfuerzo empleado por el usuario. La interfaz gráfica es sencilla e intuitiva, lo que le permitirá tener una experiencia satisfactoria.
         </SimpleText>
 
         <SubTitle>Acerca de los creadores</SubTitle>
