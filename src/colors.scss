@@ -1,19 +1,17 @@
-@import './colors2.scss';
+$primary: #3b82f6;
+$primary-hover: #60a5fa;
 
-$primary: $blue-500;
-$primary-hover: $blue-400;
+$secondary: #6b7280;
+$secondary-hover: #9ca3af;
 
-$secondary: $gray-500;
-$secondary-hover: $gray-400;
+$info: #06b6d4;
+$info-hover: #22d3ee;
 
-$info: $cyan-500;
-$info-hover: $cyan-400;
+$success: #22c55e;
+$success-hover: #4ade80;
 
-$success: $green-500;
-$success-hover: $green-400;
+$warning: #eab308;
+$warning-hover: #facc15;
 
-$warning: $yellow-500;
-$warning-hover: $yellow-400;
-
-$danger: $red-500;
-$danger-hover: $red-400;
+$danger: #ef4444;
+$danger-hover: #f87171;

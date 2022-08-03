@@ -1,26 +1,24 @@
-@import '../../colors2.scss';
-
 .about-page {
   padding: 1rem;
 
   .container {
-  
+
     .subtitle {
       font-size: 1.05rem;
       font-weight: 600;
       margin: 1.5rem 0;
       text-align: center;
-      color: $zinc-500;
+      color: #fef08a;
     }
-    
+
     .text {
       font-size: .9rem;
       letter-spacing: 0.75px;
       line-height: 1.5rem;
       font-weight: 400;
-      color: $gray-500;
+      color: #6b7280;
     }
-  
+
   }
 
 }
@@ -35,7 +33,7 @@
   justify-content: center;
 
   .card {
-    border: 1px solid black;
+    border: 1px solid lightgray;
     border-radius: .5rem;
     padding: 1rem;
     width: 240px;
@@ -43,13 +41,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  
+
     .circle {
       width: 160px;
       height: 160px;
       border-radius: 50%;
     }
-  
+
     .author-description {
       margin-top: 1rem;
       width: 100%;

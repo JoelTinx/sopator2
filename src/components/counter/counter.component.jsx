@@ -38,7 +38,6 @@ const Counter = ({min = 1, max = 99, initial = 1, onValueChange}) => {
         onClick={() => decrement()}
       >
         -
-        {/* <FontAwesomeIcon icon={faMinus} /> */}
       </button>
       <input
         type="number"
@@ -53,7 +52,6 @@ const Counter = ({min = 1, max = 99, initial = 1, onValueChange}) => {
         onClick={() => increment()}
       >
         +
-        {/* <FontAwesomeIcon icon={faPlus} /> */}
       </button>
     </div>
   );

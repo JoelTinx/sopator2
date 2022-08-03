@@ -6,18 +6,18 @@ import TableResult from '../../components/table-result/table-result.component'
 import WordList from '../../components/word-list/word-list.component'
 
 import { Sopator } from '../../libs/sopator'
-import { matrixToString } from '../../libs/utils'
+import {matrixToString, onlyLetters} from '../../libs/utils'
 
 import './home.styles.scss'
+import './home.styles.css';
+import {useDimensions} from "../../hooks/useDimensions";
 
 const HomePage = () => {
-  const [min, max, initialValue] = [10, 50, 15];
+	const { height, width, setHeight, setWidth, min, max, initialValue } = useDimensions();
   const [words, setWords] = useState([])
   const [word, setWord] = useState('')
   const [matrix, setMatrix] = useState([]);
   const [ready, setReady] = useState(false);
-  const [width, setWidth] = useState(initialValue);
-  const [height, setHeight] = useState(initialValue);
   const [textSolution, setTextSolution] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [backup, setBackup] = useState([]);
@@ -39,6 +39,7 @@ const HomePage = () => {
 
   const isValidWord = (inputWord) => {
     if (inputWord.length <= 2) return false;
+		if (!onlyLetters(inputWord)) return false;
     return true;
   }
 
@@ -78,14 +79,6 @@ const HomePage = () => {
     setReady(false)
   }
 
-  const onWithChange = (inputWidth) => {
-    setWidth(inputWidth)
-  }
-
-  const onHeightChange = (inputHeight) => {
-    setHeight(inputHeight);
-  }
-
   const showModal = () => {
     setModalVisible(true);
   }
@@ -109,11 +102,22 @@ const HomePage = () => {
     setViewSolution(!viewSolution)
   }
 
+	const WordsList = () => {
+		if (words.length === 0 )return null;
+		return <div className="card mt-16">
+			<WordList
+				words={words}
+				updateWord={updateWord}
+				removeWord={removeWord}
+			/>
+		</div>
+	}
+
   return (
-    <div className='main-container'>
-      <div className='main-header'>
-        <h3>CREA TÚ PROPIA SOPA DE LETRAS</h3>
-      </div>
+    <>
+			<div className="main__header">
+				<h3>GENERADOR DE SOPAS DE LETRAS</h3>
+			</div>
       <div className="main">
         <div className="left-side p-16 flex-column">
           <div>
@@ -121,8 +125,8 @@ const HomePage = () => {
               min={min}
               max={max}
               initialValue={initialValue}
-              onHeightChange={onHeightChange}
-              onWithChange={onWithChange}
+              onHeightChange={setHeight}
+              onWidthChange={setWidth}
             />
             <div className="card mt-16">
               <p className="title center mb-8">Ingresar palabras</p>
@@ -146,21 +150,12 @@ const HomePage = () => {
                 Agregar
               </button>
             </div>
-            {
-              words.length >= 1 &&
-              <div className="card mt-16">
-                <WordList
-                  words={words}
-                  updateWord={updateWord}
-                  removeWord={removeWord}
-                />
-              </div>
-            }
+						<WordsList />
           </div>
           <div>
             {
               words.length >= 2 &&
-              <button 
+              <button
                 className="btn btn-block btn-danger"
                 onClick={handleClickCleanWords}
               >
@@ -197,17 +192,15 @@ const HomePage = () => {
             { matrix.length > 0 && <TableResult matrix={matrix} solution={viewSolution} backup={backup} words={words} /> }
           </div>
         </div>
-        {
-          modalVisible &&
-          <Modal
-            children={<ModalBody content={textSolution} />}
-            backdropdismiss={false}
-            onCloseClick={closeModal}
-            onOkClick={handleClickOkAndClose}
-          />
-        }
+				<Modal
+					children={<ModalBody content={textSolution} />}
+					backdropdismiss={false}
+					onCloseClick={closeModal}
+					onOkClick={handleClickOkAndClose}
+					isOpen={modalVisible}
+				/>
       </div>
-    </div>
+    </>
   )
 }
 

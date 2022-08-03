@@ -1,5 +1,3 @@
-@import '../../colors2.scss';
-
 .advices-page {
 
   .container {
@@ -19,7 +17,7 @@
   font-weight: 600;
   margin: 1.5rem 0;
   text-align: center;
-  color: $zinc-500;
+  color: #71717a;
 }
 
 .grid {
@@ -29,7 +27,7 @@
       letter-spacing: 0.75px;
       line-height: 1.5rem;
       font-weight: 400;
-      color: $gray-500;
+      color: #6b7280;
     }
   }
   display: grid;

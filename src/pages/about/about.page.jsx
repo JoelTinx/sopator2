@@ -7,14 +7,9 @@ import './about.styles.scss'
 const AboutPage = () => {
   const authors = [
     {
-      name: 'Joel Tinoco',
+      name: 'Joel Tinx',
       imageUrl: 'assets/images/joeltinx.jpg',
       jobTitle: 'Programador',
-    },
-    {
-      name: 'Emily Lapa',
-      imageUrl: 'assets/images/emilyls.jpeg',
-      jobTitle: 'Revisión y corrección de contenido',
     },
   ];
 
@@ -23,7 +18,7 @@ const AboutPage = () => {
       <div className="container">
         <SubTitle>¿Qué es Sopator?</SubTitle>
         <SimpleText>
-          <strong> Sopator</strong> es una aplicación web de código abierto, cuya principal finalidad es facilitar la creación de sopas de letras, reduciendo el tiempo y esfuerzo empleado por el usuario. La interfaz gráfica es sencilla e intuitiva, lo que le permitirá tener una experiencia satisfactoria.
+          <strong> Sopator</strong> es una aplicación web de código abierto, cuya finalidad es facilitar la creación de sopas de letras, reduciendo el tiempo y esfuerzo empleado por el usuario. La interfaz gráfica es sencilla e intuitiva, lo que le permitirá tener una experiencia satisfactoria.
         </SimpleText>
 
         <SubTitle>Acerca de los creadores</SubTitle>

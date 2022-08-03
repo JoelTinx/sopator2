@@ -3,14 +3,14 @@ import React from 'react'
 import './modal.styles.scss'
 import '../../utils.scss'
 
-const Modal = ({ children, onCloseClick, onOkClick, backdropdismiss = false }) => {
+const Modal = ({ children, onCloseClick, onOkClick, isOpen = false,backdropdismiss = false }) => {
   const handleBackdropdissmis = (hasbackdrop) => {
     if (!hasbackdrop) return;
     onClick();
   }
   return (
     <div
-      className="modal"
+      className={`modal ${!isOpen ? 'invisible' : ''}`}
       onClick={() => handleBackdropdissmis(backdropdismiss)}
     >
       <div className="modal-content">

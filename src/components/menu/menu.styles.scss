@@ -1,8 +1,7 @@
 @import '../../colors.scss';
-@import '../../colors2.scss';
 
 nav {
-  background-color: $slate-800;
+  background-color: #1e293b;
   display: flex;
   padding: 0;
   width: 100%;
@@ -14,11 +13,11 @@ nav {
     max-width: 1280px;
     display: flex;
     justify-content: space-between;
-    
+
     .logo-container {
       display: flex;
       align-items: center;
-    
+
       a {
         color: white;
         text-transform: uppercase;
@@ -40,13 +39,13 @@ nav {
         align-items: center;
         text-transform: uppercase;
 
-      
+
         &:hover {
-          background-color: $slate-600;
+          background-color: #475569;
         }
-  
+
         &.menu-item--active {
-          background-color: $slate-600;
+          background-color: #475569;
         }
       }
     }

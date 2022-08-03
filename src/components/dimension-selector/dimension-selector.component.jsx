@@ -2,7 +2,7 @@ import React from 'react'
 
 import Counter from '../counter/counter.component'
 
-const DimensionSelector = ({ min, max, initialValue, onHeightChange, onWithChange }) => {
+const DimensionSelector = ({ min, max, initialValue, onHeightChange, onWidthChange }) => {
   return (
     <div className="card">
       <p className="title center mb-16">Dimensiones</p>
@@ -22,7 +22,7 @@ const DimensionSelector = ({ min, max, initialValue, onHeightChange, onWithChang
             min={min}
             max={max}
             initial={initialValue}
-            onValueChange={onWithChange}
+            onValueChange={onWidthChange}
           />
         </div>
       </div>
